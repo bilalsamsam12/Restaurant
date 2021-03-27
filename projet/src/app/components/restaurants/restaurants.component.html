@@ -1,0 +1,31 @@
+
+ <h3>Restaurants
+    <img src="../../../assets/images/accueil.png" width="30" height="30" alt="Restaurant">
+</h3>
+
+<div class="cards">
+    <div class="card" *ngFor="let rest of RestaurantList">
+        <a routerLink='/Restaurant/{{rest.id}}'>
+            <img [src]="baseUrl+rest.image" alt="restaurant" class="card__image">
+        </a>
+
+        <div class="card__info">
+            <div>
+                <a routerLink='/Restaurant/{{rest.id}}' id='titre'> {{rest.titre}}</a>
+            </div>
+            <div>
+                <p *ngIf="rest.livraison==0; then thenBlock else elseBlock" class="card__link"></p>
+                <ng-template #thenBlock><span class="text-danger">Livraison <i class="fa fa-times-circle"></i></span>
+                </ng-template>
+                <ng-template #elseBlock><span class="text-success">Livraison <i class="fa fa-check-circle"></i></span>
+                </ng-template>
+
+                <p *ngIf="rest.emporter==0; then thenBlock1 else elseBlock1" class="card__link"></p>
+                <ng-template #thenBlock1><span class="text-danger">Emporter <i class="fa fa-times-circle"></i></span>
+                </ng-template>
+                <ng-template #elseBlock1><span class="text-success">Emporter <i class="fa fa-check-circle"></i></span>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

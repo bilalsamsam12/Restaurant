@@ -1,0 +1,37 @@
+
+<section class="about container ">
+    <div id="div1">
+        <a routerLink="/"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        <!-- title -->
+        <div>
+            <h1>{{resto.titre}}</h1>
+            <h3>{{resto.sous_titre}}</h3>
+        </div>
+        <!-- description -->
+        <p >
+            {{resto.description}}
+        </p>
+        <p  style="font-weight: bold;">
+            Téléphone : {{resto.telephone}}
+        </p>
+        <p  style="font-weight: bold;">
+            Address : {{resto.address}}
+        </p>
+        <div>
+            <p *ngIf="resto.livraison==0; then thenBlock else elseBlock" class="card__link"></p>
+            <ng-template #thenBlock><span class="text-danger">Livraison <i class="fa fa-times-circle"></i></span>
+            </ng-template>
+            <ng-template #elseBlock><span class="text-success">Livraison <i class="fa fa-check-circle"></i></span>
+            </ng-template>
+
+            <p *ngIf="resto.emporter==0; then thenBlock1 else elseBlock1" class="card__link"></p>
+            <ng-template #thenBlock1><span class="text-danger">Emporter <i class="fa fa-times-circle"></i></span>
+            </ng-template>
+            <ng-template #elseBlock1><span class="text-success">Emporter <i class="fa fa-check-circle"></i></span>
+            </ng-template>
+        </div>
+    </div>
+    <div style="margin-top: 15px;">
+        <img [src]="baseUrl+resto.image" alt="restaurant" width="500" height="300">
+    </div>
+</section>
